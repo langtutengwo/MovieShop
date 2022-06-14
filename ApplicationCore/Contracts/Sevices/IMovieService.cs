@@ -8,6 +8,6 @@ namespace ApplicationCore.Contracts.Sevices
 {
     public interface IMovieService
     {
-        // all the business methods
+        // all the business methods of the movies
     }
 }
