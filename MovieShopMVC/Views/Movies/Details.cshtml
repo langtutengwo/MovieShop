@@ -1,0 +1,124 @@
+﻿@model ApplicationCore.Models.MovieDetailsModel
+
+<div class="container-fluid">
+    <div class="row bg-secondary">
+        <div class="col-4">
+            <img src="@Model.PosterUrl" class="img-fluid float-end" alt="@Model.Title"/>
+        </div>
+        <div class="col-6 text-white">
+            <h2 class="bt-40">@Model.Title</h2>
+            <p>@Model.Tagline</p>
+            <h4>@Model.RunTime m| @Model.ReleaseDate.Value.Year</h4>
+            <div>
+                <span class="badge bg-success">@Model.Rating</span>
+            </div>
+            <div>
+                @foreach (var genre in @Model.Genres)
+                {
+                    <span class="badge rounded-pill bg-primary text-center">
+                        @genre.Name
+                    </span>
+                }
+            </div>   
+            
+            <div><p>@Model.Overview</p></div>
+        </div>
+        <div class="col-2">
+            <button type="button" class="btn btn-dark text-white btn-block mt-2" data-bs-toggle="modal" data-bs-target="#myModal">Review</button>
+            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabel">Review</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                Rating
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li class="dropdown-item">1</li>
+                                    <li class="dropdown-item">2</li>
+                                    <li class="dropdown-item">3</li>
+                                    <li class="dropdown-item">4</li>
+                                    <li class="dropdown-item">5</li>
+                                    <li class="dropdown-item">6</li>
+                                    <li class="dropdown-item">7</li>
+                                    <li class="dropdown-item">8</li>
+                                    <li class="dropdown-item">9</li>
+                                    <li class="dropdown-item">10</li>
+                                </ul>
+                            </div>
+                            <form>
+                                <div class="form-group">
+                                    <label for="comment">Your Review:</label>
+                                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-dark">Submit</button>
+                        </div>
+                    </div>
+      
+                </div>
+            </div>
+            <br />
+            
+            <button type="button" class="btn btn-light btn-block mt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Buy $@Model.Price</button>
+            <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Buy this movie</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Buy this movie with $@Model.Price</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-dark">Purchase</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-3">
+    <div class="col-5 bg-light">
+        <div><h3>MOVIE FACTS</h3></div>
+        <hr />
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item bg-light">Release Date  <span class="badge rounded-pill" style="background-color:black">@Model.ReleaseDate.Value.ToShortDateString()</span></li>
+            <li class="list-group-item bg-light">Run Time  <span class="badge rounded-pill" style="background-color:black">@Model.RunTime m</span></li>
+            <li class="list-group-item bg-light">Box Office  <span class="badge rounded-pill" style="background-color:black">$@Model.Revenue</span></li>
+            <li class="list-group-item bg-light">Budget  <span class="badge rounded-pill" style="background-color:black">$@Model.Budget</span></li>
+        </ul>
+        <div>
+            <h3>TRAILERS</h3>
+            <hr />
+        </div>
+        <ul class="list-group list-group-flush">
+            @foreach (var trailer in @Model.Trailers)
+            {
+                <li class="list-group-item bg-light"><a href="@trailer.TrailerUrl">@trailer.Name</a></li>
+            }
+        </ul>
+    </div>
+
+    <div class="col-1"></div>
+
+    <div class="col-6">
+        <h3>CAST</h3>
+    </div>
+
+</div>
+
+
+
+

@@ -7,8 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Entites\" />
+    <None Remove="Contracts\" />
+    <None Remove="Exceptions\" />
+    <None Remove="Models\" />
+    <None Remove="Entities\" />
+    <None Remove="Contracts\Services\" />
+    <None Remove="Contracts\Repositories\" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
 </Project>
