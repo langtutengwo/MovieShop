@@ -36,6 +36,7 @@ namespace Infrastructure.Repositories
             // where id = id
             var movieDetails = await _dbContext.Movies
                 .Include(m => m.GenresOfMovie).ThenInclude(m => m.Genre)
+                .Include(m => m.CastsOfMovie).ThenInclude(m => m.Cast)
                 .Include(m => m.Trailers).FirstOrDefaultAsync(m => m.Id == id);
 
             // FirstOrDefault

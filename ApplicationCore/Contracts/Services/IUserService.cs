@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplicationCore.Contracts.Sevices
+namespace ApplicationCore.Contracts.Services
 {
-    public interface IGenreService
+    public interface IUserService
     {
     }
 }

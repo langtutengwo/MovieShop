@@ -8,4 +8,3 @@ namespace ApplicationCore.Contracts.Repositories
         Task<IEnumerable<Movie>> Get30HighestRatedMovies();
     }
 }
-

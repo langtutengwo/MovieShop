@@ -1,6 +1,5 @@
 ﻿@model ApplicationCore.Models.MovieDetailsModel
 
-<div><h1>Testing</h1></div>
 <div class="container-fluid">
     <div class="row bg-secondary">
         <div class="col-4">
@@ -91,33 +90,55 @@
 </div>
 
 <div class="container-fluid mt-3">
-    <div class="col-5 bg-light">
-        <div><h3>MOVIE FACTS</h3></div>
-        <hr />
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item bg-light">Release Date  <span class="badge rounded-pill" style="background-color:black">@Model.ReleaseDate.Value.ToShortDateString()</span></li>
-            <li class="list-group-item bg-light">Run Time  <span class="badge rounded-pill" style="background-color:black">@Model.RunTime m</span></li>
-            <li class="list-group-item bg-light">Box Office  <span class="badge rounded-pill" style="background-color:black">$@Model.Revenue</span></li>
-            <li class="list-group-item bg-light">Budget  <span class="badge rounded-pill" style="background-color:black">$@Model.Budget</span></li>
-        </ul>
-        <div>
-            <h3>TRAILERS</h3>
+    <div class="row">
+        <div class="col-4 bg-light">
+            <div><h3>MOVIE FACTS</h3></div>
             <hr />
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-light">Release Date  <span class="badge rounded-pill" style="background-color:black">@Model.ReleaseDate.Value.ToShortDateString()</span></li>
+                <li class="list-group-item bg-light">Run Time  <span class="badge rounded-pill" style="background-color:black">@Model.RunTime m</span></li>
+                <li class="list-group-item bg-light">Box Office  <span class="badge rounded-pill" style="background-color:black">$@Model.Revenue</span></li>
+                <li class="list-group-item bg-light">Budget  <span class="badge rounded-pill" style="background-color:black">$@Model.Budget</span></li>
+            </ul>
+            <div>
+                <h3>TRAILERS</h3>
+                <hr />
+            </div>
+            <ul class="list-group list-group-flush">
+                @foreach (var trailer in @Model.Trailers)
+                {
+                    <li class="list-group-item bg-light"><a href="@trailer.TrailerUrl">@trailer.Name</a></li>
+                }
+            </ul>
         </div>
-        <ul class="list-group list-group-flush">
-            @foreach (var trailer in @Model.Trailers)
-            {
-                <li class="list-group-item bg-light"><a href="@trailer.TrailerUrl">@trailer.Name</a></li>
-            }
-        </ul>
+
+        <div class="col-5">
+            <h3>CAST</h3><hr />
+            <ul class="list-group list-group-flush">
+                @foreach (var cast in @Model.Casts)
+                {
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-2">
+                                <img src="@cast.ProfilePath" class="img-fluid" alt="@cast.Name" />
+                            </div>
+                            <div class="col-4">
+                                <a asp-controller="Cast" asp-action="Details" asp-route-id="@cast.Id">
+                                    @cast.Name
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                @cast.Character
+                            </div>
+                            <div class="col-2">
+
+                            </div>
+                        </div>
+                    </div><hr />
+                }
+            </ul>
+        </div>
     </div>
-
-    <div class="col-1"></div>
-
-    <div class="col-6">
-        <h3>CAST</h3>
-    </div>
-
 </div>
 
 
