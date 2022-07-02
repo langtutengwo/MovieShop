@@ -30,13 +30,12 @@ namespace Infrastructure.Services
                 Gender = castDetails.Gender,
             };
 
+
             foreach (var casts in castDetails.CastsOfMovies)
             {
                 cast.Casts.Add(new CastModel { Id = casts.CastId, Name = casts.Cast.Name, Character = casts.Character });
                 cast.Movies.Add(new MovieDetailsModel { Id = casts.CastId, Title = casts.Movie.Title,PosterUrl = casts.Movie.PosterUrl});
             }
-
-            
 
             return cast;
         }

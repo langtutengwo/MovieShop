@@ -1,15 +1,15 @@
 ﻿@model ApplicationCore.Models.CastDetailsModel
 
 <div class="container-fluid">
-    <div class="row" style="background-color:darkslateblue">
+    <div class="row bg-light">
         <div class="col-5" >
             <img src="@Model.ProfilePath" class="img-fluid float-end" alt="@Model.Name" />
         </div>
 
         <div class="col-7">
             <br /><br />
-            <h1 style="color:white">@Model.Name</h1><br /><br />
-            <a href="@Model.TmdbUrl"><button type="button" class="btn btn-outline-light">Know more about this cast...</button></a>
+            <h1 class="text-dark"">@Model.Name</h1><br /><br />
+            <a href="@Model.TmdbUrl"><button type="button" class="btn btn-link">More about @Model.Name...</button></a>
         </div>  
     </div><br /><br />
 
